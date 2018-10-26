@@ -5,13 +5,23 @@
   "main": "database.js",
   "scripts": {
     "start": "mysql -u root < db/init.sql && nodemon server/index.js",
+    "react-dev": "webpack -d --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jim Martin",
   "license": "ISC",
   "dependencies": {
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
     "moment": "^2.22.2",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2"
   }
 }
