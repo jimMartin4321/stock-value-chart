@@ -8,14 +8,17 @@ class App extends React.Component {
     };
   }
 
-  getData() {
-    
+  componentDidMount() {
+    fetch(__dirname + '/stocks/1')
+      .then( (res) => {
+        this.setState({data: res.body});
+      });
   }
 
   render() {
     return (
       <div>
-        <Graph data={data}/>
+        <Graph data={this.state.data}/>
       </div>
     );
   }
