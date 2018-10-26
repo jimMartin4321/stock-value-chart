@@ -24,6 +24,14 @@ module.exports.addStock = (companyId, dateTime, price) => {
   });
 };
 
+module.exports.getStockPrices = (companyId) => {
+  con.query('SELECT price FROM stocks WHERE (company = ?)', [companyId], (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+};
+
 con.connect((err) => {
   if (err) {
     return console.log('error connecting to my sql: ', err);
