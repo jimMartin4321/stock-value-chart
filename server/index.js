@@ -20,5 +20,10 @@ app.listen(port, (err) => {
 });
 
 app.get('/stocks/:companyId', (req, res) => {
-  console.log(req.params.companyId);
+  db.getStockPrices(req.params.companyId, (err, data) => {
+    if (err) {
+      return console.log(err);
+    }
+    res.json(data);
+  });
 });

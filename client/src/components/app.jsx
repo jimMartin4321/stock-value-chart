@@ -10,10 +10,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('component mounted!');
     fetch(path.join(__dirname, '/stocks/1'))
       .then( (res) => {
-        this.setState({data: res.body});
+        console.log('we have fetched!!');
+        let data = res.json();
+        this.setState({data: data});
       });
   }
 

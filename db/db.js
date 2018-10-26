@@ -1,5 +1,4 @@
 const mySql = require('mysql');
-const seed = require('./seed.js');
 
 const con = mySql.createConnection({
   host: 'localhost',
@@ -24,17 +23,11 @@ module.exports.addStock = (companyId, dateTime, price) => {
   });
 };
 
-module.exports.getStockPrices = (companyId) => {
-  con.query('SELECT price FROM stocks WHERE (company = ?)', [companyId], (err) => {
+module.exports.getStockPrices = (companyId, callback) => {
+  con.query('SELECT * FROM stocks WHERE (company = ?)', [companyId], (err, data) => {
     if (err) {
-      console.log(err);
+      callback(err);
     }
+    callback(null, data);
   });
 };
-
-con.connect((err) => {
-  if (err) {
-    return console.log('error connecting to my sql: ', err);
-  }
-  return seed.populate();
-});
