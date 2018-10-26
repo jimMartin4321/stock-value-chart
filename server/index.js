@@ -1,18 +1,22 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path');
-var db = require('../db/db.js');
-var app = express();
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const db = require('../db/db.js');
+const app = express();
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-let port = 3004;
+const port = 3004;
 
-app.listen(port, function(err) {
+app.listen(port, (err) => {
   if (err) {
     return console.log(`error connection to port ${port}`);
   }
-  console.log(`listening at port ${port}`);
+  return console.log(`listening at port ${port}`);
+});
+
+app.get('/stocks', (req, res) => {
+  
 });

@@ -1,0 +1,21 @@
+import React from 'react';
+
+class Graph extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <svg height="80" width="300">
+        <g fill="none">
+          <path stroke="red" d="M5 20 l215 0" />
+          <path stroke="black" d="M5 40 l215 0" />
+          <path stroke="blue" d="M5 60 l215 0" />
+        </g>
+      </svg>
+    );
+  }
+}
+
+export default Graph;
