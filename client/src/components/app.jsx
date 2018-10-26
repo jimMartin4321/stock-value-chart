@@ -1,5 +1,6 @@
 import React from 'react';
 import Graph from './graph.jsx';
+import path from 'path';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch(__dirname + '/stocks/1')
+    console.log('component mounted!');
+    fetch(path.join(__dirname, '/stocks/1'))
       .then( (res) => {
         this.setState({data: res.body});
       });

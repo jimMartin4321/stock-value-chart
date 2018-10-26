@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const urlParse = require('url-parse');
 const db = require('../db/db.js');
+
 const app = express();
 
 app.use(express.static(path.join(__dirname, '../client/public')));
@@ -17,6 +19,6 @@ app.listen(port, (err) => {
   return console.log(`listening at port ${port}`);
 });
 
-app.get('/stocks', (req, res) => {
-  
+app.get('/stocks/:companyId', (req, res) => {
+  console.log(req.params.companyId);
 });

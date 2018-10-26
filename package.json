@@ -20,7 +20,8 @@
     "mysql": "^2.16.0",
     "nodemon": "^1.18.4",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react-dom": "^16.6.0",
+    "url-parse": "^1.4.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
