@@ -1,11 +1,11 @@
-var mySql = require('mysql');
-var seed = require('./seed.js');
+const mySql = require('mysql');
+const seed = require('./seed.js');
 
-var con = mySql.createConnection({
+const con = mySql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'robinhood'
+  database: 'robinhood',
 });
 
 module.exports.addCompany = (companyName) => {
@@ -24,9 +24,9 @@ module.exports.addStock = (companyId, dateTime, price) => {
   });
 };
 
-con.connect(function(err) {
+con.connect((err) => {
   if (err) {
     return console.log('error connecting to my sql: ', err);
   }
-  seed.populate();
+  return seed.populate();
 });
