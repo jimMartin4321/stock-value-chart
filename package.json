@@ -4,13 +4,14 @@
   "description": "database intialization folder",
   "main": "database.js",
   "scripts": {
-    "start": "nodemon server/index.js",
+    "start": "mysql -u root < db/init.sql && nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jim Martin",
   "license": "ISC",
   "dependencies": {
     "moment": "^2.22.2",
-    "mysql": "^2.16.0"
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.4"
   }
 }
