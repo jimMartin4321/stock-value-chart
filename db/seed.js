@@ -9,7 +9,7 @@ const randIncDec = (number) => {
   return -number;
 };
 
-module.exports.populate = () => {
+( () => {
   const hour = moment().get('hour');
   const minutes = moment().get('minute');
   let numDataPts;
@@ -40,4 +40,6 @@ module.exports.populate = () => {
       db.addStock(company.id, time, company.price);
     }
   }
-};
+})();
+
+// process.exit(console.log('we have seed succesfully'));

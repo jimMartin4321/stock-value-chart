@@ -4,7 +4,8 @@
   "description": "database intialization folder",
   "main": "database.js",
   "scripts": {
-    "start": "mysql -u root < db/init.sql && nodemon server/index.js",
+    "start": "nodemon server/index.js",
+    "db-dev": "mysql -u root < db/init.sql && node db/seed.js",
     "react-dev": "webpack -d --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,11 +17,13 @@
     "babel-loader": "^8.0.4",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "faker": "^4.1.0",
     "moment": "^2.22.2",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.4",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react-dom": "^16.6.0",
+    "url-parse": "^1.4.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
