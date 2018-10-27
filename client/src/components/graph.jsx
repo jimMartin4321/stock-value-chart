@@ -5,17 +5,42 @@ class Graph extends React.Component {
     super(props);
   }
 
+  definePricePoints() {
+    let line = '';
+    let xPos = 0;
+    this.props.data.forEach(price => {
+      line+= xPos + "," + (price.price % 100)  +  " ";
+      xPos += 3;
+    });
+    line = line.slice(0, -1);
+    return line;
+  }
+
+  graphCreation() {
+    if (this.props.data.length) {
+      const points = this.definePricePoints();
+      return (
+        <svg viewBox="0 0 500 100" className="chart">
+          <polyline
+            fill="none"
+            stroke="#0074d9"
+            strokeWidth="1"
+            points={points} />
+        </svg>
+      );
+    }
+    return '';
+  }
+
   render() {
     return (
-      <svg height="80" width="300">
-        <g fill="none">
-          <path stroke="red" d="M5 20 l215 0" />
-          <path stroke="black" d="M5 40 l215 0" />
-          <path stroke="blue" d="M5 60 l215 0" />
-        </g>
-      </svg>
+      <div className="stockValueGraph">
+        {this.graphCreation()}
+      </div>
     );
   }
 }
 
 export default Graph;
+
+// { this.definePricePoints() }

@@ -1,0 +1,11 @@
+.body {
+  margin: 0%;
+  height: 100%;
+}
+.stockValueGraph {
+  display: inline-block;
+  width: 50%;
+  height: 75%;
+  margin-left: 10%;
+  background-color: rosybrown;
+}

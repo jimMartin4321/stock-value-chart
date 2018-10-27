@@ -24,7 +24,7 @@ module.exports.addStock = (companyId, dateTime, price) => {
 };
 
 module.exports.getStockPrices = (companyId, callback) => {
-  con.query('SELECT * FROM stocks WHERE (company = ?)', [companyId], (err, data) => {
+  con.query('SELECT price FROM stocks WHERE (company = ?)', [companyId], (err, data) => {
     if (err) {
       callback(err);
     }

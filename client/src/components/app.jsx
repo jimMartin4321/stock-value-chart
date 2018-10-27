@@ -12,9 +12,9 @@ class App extends React.Component {
   componentDidMount() {
     fetch(path.join(__dirname, '/stocks/1'))
       .then( (res) => {
-        console.log('we have fetched!!');
-        let data = res.json();
-        this.setState({data: data});
+        return res.json();
+      }).then( (jsonData) => {
+        this.setState({ data: jsonData });
       });
   }
 
