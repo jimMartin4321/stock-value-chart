@@ -10,7 +10,7 @@ class Graph extends React.Component {
     let xPos = 0;
     this.props.data.forEach(price => {
       line+= xPos + "," + (price.price % 100)  +  " ";
-      xPos += 3;
+      xPos += 4.2;
     });
     line = line.slice(0, -1);
     return line;
