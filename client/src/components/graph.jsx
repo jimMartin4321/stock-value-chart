@@ -9,15 +9,12 @@ class Graph extends React.Component {
     let line = '';
     let xPos = 0;
     const yAxisMidpoint = (document.getElementById('App').clientHeight * 6/10) / 2;
-    //set first datum point to be the intended offset value, then plot all corresponding as their difference with that first datum point
     const priceOffSet = this.props.data[0].price;
     this.props.data.forEach(price => {
       const yPos = yAxisMidpoint + ((priceOffSet - price.price) * 4);
-      line += xPos + "," + yPos  +  " ";
+      line += `${xPos},${yPos} `;
       xPos += 8;
     });
-    line = line.slice(0, -1);
-    console.log(line);
     return line;
   }
 
