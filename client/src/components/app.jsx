@@ -20,9 +20,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
         <Graph data={this.state.data}/>
-      </div>
     );
   }
 }
