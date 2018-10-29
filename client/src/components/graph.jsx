@@ -8,24 +8,28 @@ class Graph extends React.Component {
   definePricePoints() {
     let line = '';
     let xPos = 0;
+    const yAxisMidpoint = (document.getElementById('App').clientHeight * 6/10) / 2;
+    //set first datum point to be the intended offset value, then plot all corresponding as their difference with that first datum point
+    const priceOffSet = this.props.data[0].price;
     this.props.data.forEach(price => {
-      line+= xPos + "," + (price.price % 100)  +  " ";
-      xPos += 4.2;
+      const yPos = yAxisMidpoint + ((priceOffSet - price.price) * 4);
+      line += xPos + "," + yPos  +  " ";
+      xPos += 8;
     });
     line = line.slice(0, -1);
+    console.log(line);
     return line;
   }
 
   graphCreation() {
     if (this.props.data.length) {
-      const points = this.definePricePoints();
       return (
-        <svg viewBox="0 0 500 100" className="chart">
+        <svg className="chart">
           <polyline
             fill="none"
             stroke="#0074d9"
-            strokeWidth="1"
-            points={points} />
+            strokeWidth="1.25"
+            points={this.definePricePoints()} />
         </svg>
       );
     }
