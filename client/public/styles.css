@@ -20,4 +20,5 @@ body {
   display: inline-block;
   grid-row: 4 / span 6;
   grid-column: 1 / span 15;
+  border: 2px solid black;
 }
