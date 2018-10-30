@@ -16,7 +16,6 @@ class Graph extends React.Component {
     });
     return data;
   }
-  
 
   graphCreation() {
     if (this.props.data.length) {
