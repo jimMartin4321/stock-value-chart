@@ -1,5 +1,6 @@
 import React from 'react';
-import { LineChart, Line, ResponsiveContainer, YAxis, XAxis, ReferenceLine } from 'recharts';
+import { LineChart, Line, ResponsiveContainer, YAxis, XAxis, ReferenceLine, Tooltip } from 'recharts';
+import CustomToolTip from './CustomToolTip.jsx';
 
 class Graph extends React.Component {
   constructor(props) {
@@ -15,7 +16,6 @@ class Graph extends React.Component {
     });
     return data;
   }
-  
 
   graphCreation() {
     if (this.props.data.length) {
@@ -27,6 +27,7 @@ class Graph extends React.Component {
           <LineChart className="chart" width={document.getElementById('App').clientWidth} height={document.getElementById('App').clientHeight * 6 / 10} data={data}>
             <YAxis type="number" domain={['dataMin', 'dataMax']} hide={true}/>
             <XAxis dataKey="time" hide={true}/>
+            <Tooltip content={<CustomToolTip time={data.time}/>}/>
             <ReferenceLine y={openingPrice} stroke="black" strokeDasharray="1 8"/>
               <Line type="monotone" dataKey="price" stroke="#8884d8" />
           </LineChart>
