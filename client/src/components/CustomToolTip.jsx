@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-class CustomToolTip extends React.Component {
+class CustomToolTip extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -15,9 +15,8 @@ class CustomToolTip extends React.Component {
 
   render() {
     const { active } = this.props;
+    const { payload } = this.props;
     if (active) {
-      const { payload } = this.props;
-      const { coordinate } = this.props;
       return (
         <div className="CustomToolTip">
           <p className="time">{this.formatTime(payload)}</p>
