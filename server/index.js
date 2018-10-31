@@ -24,6 +24,7 @@ app.get('/stocks/:companyId', (req, res) => {
     if (err) {
       res.end(err);
     }
+    console.log('data in the server: ', data);
     res.json(data);
   });
 });

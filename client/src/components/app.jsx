@@ -1,6 +1,7 @@
 import React from 'react';
 import Graph from './graph.jsx';
 import path from 'path';
+import moment from 'moment';
 class App extends React.Component {
   constructor(props) {
     super(props);

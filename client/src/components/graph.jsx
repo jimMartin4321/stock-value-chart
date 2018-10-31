@@ -15,7 +15,6 @@ class Graph extends React.Component {
       priceElem.time = time;
       time += 5;
     });
-    console.log(data);
     return data;
   }
 
@@ -33,7 +32,7 @@ class Graph extends React.Component {
 
   graphCreation() {
     if (this.props.data.length) {
-      this.data = this.data || this.priceData();
+      this.data = this.data || this.props.data;
       const openingPrice = this.data[0].price;
 
       return (

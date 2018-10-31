@@ -9,7 +9,7 @@ const randIncDec = (number) => {
   return -number;
 };
 
-( () => {
+(() => {
   const hour = moment().tz('America/New_York').get('hour');
   const minutes = moment().get('minute');
   let numDataPts;
@@ -41,5 +41,3 @@ const randIncDec = (number) => {
     }
   }
 })();
-
-// process.exit(console.log('we have seed succesfully'));
