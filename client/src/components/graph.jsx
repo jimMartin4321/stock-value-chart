@@ -8,16 +8,6 @@ class Graph extends React.Component {
     let data;
   }
 
-  priceData() {
-    let data = this.props.data.slice();
-    let time = 0;
-    data.forEach( (priceElem) => {
-      priceElem.time = time;
-      time += 5;
-    });
-    return data;
-  }
-
   priceHover(event) {
     if (event.activePayload) {
       const price = event.activePayload[0].payload.price;

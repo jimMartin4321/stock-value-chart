@@ -13,7 +13,7 @@ class App extends React.Component {
 
   timeUpdate(jsonData) {
     return jsonData.map( (stockObj) => {
-      let time = moment(stockObj.dateTime).format('h: mm A');
+      let time = moment(stockObj.dateTime).format('h:mm A') + ' ET';
       return {
         price: stockObj.price,
         time: time,
