@@ -6,7 +6,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       data: [],
-      currentPrice: undefined,
+      companyName: undefined,
     };
   }
 
@@ -16,15 +16,23 @@ class App extends React.Component {
         return res.json();
       }).then( (jsonData) => {
         this.setState({ 
-          data: jsonData,
-          currentPrice: jsonData[0].price,
+          data: jsonData
+        });
+      });
+    fetch(path.join(__dirname, '/companies/1'))
+      .then( (res) => {
+        return res.json();
+      }).then( (jsonData) => {
+        const companyName = jsonData[0].name;
+        this.setState({
+          companyName: companyName
         });
       });
   }
 
   render() {
     return (
-      <Graph data={this.state.data}/>
+      <Graph data={this.state.data} companyName={this.state.companyName}/>
     );
   }
 }

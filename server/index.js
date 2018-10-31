@@ -27,3 +27,12 @@ app.get('/stocks/:companyId', (req, res) => {
     res.json(data);
   });
 });
+
+app.get('/companies/:companyId', (req, res) => {
+  db.getCompanyName(req.params.companyId, (err, data) => {
+    if (err) {
+      res.end(err);
+    }
+    res.json(data);
+  });
+});

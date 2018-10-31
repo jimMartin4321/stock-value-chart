@@ -53,7 +53,7 @@ class Graph extends React.Component {
   priceDisp() {
     if (this.props.data.length) {
       return (
-        <div id="price">{this.data[this.data.length-1].price}</div>
+        <div id="price">{this.data[this.data.length-1].price + ' ' + this.props.companyName}</div>
       );
     }
     return '';
