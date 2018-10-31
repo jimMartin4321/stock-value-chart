@@ -16,7 +16,7 @@ const randIncDec = (number) => {
   let dateTime;
 
   if (hour < 9 || (hour === 9 && minutes < 30) || hour > 16) {
-    numDataPts = 108;
+    numDataPts = 78;
     dateTime = moment().hour(16).minutes(0).seconds(0)
       .milliseconds(0);
   } else {
