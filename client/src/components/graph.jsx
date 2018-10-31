@@ -5,6 +5,7 @@ import CustomToolTip from './CustomToolTip.jsx';
 class Graph extends React.Component {
   constructor(props) {
     super(props);
+    let data;
   }
 
   priceData() {
@@ -17,19 +18,31 @@ class Graph extends React.Component {
     return data;
   }
 
+  priceHover(event) {
+    if (event.activePayload) {
+      const price = event.activePayload[0].payload.price;
+      return (document.getElementById('price').innerHTML = '' + price);
+    }
+    return null;
+  }
+
+  priceReset() {
+    document.getElementById('price').innerHTML = '' + this.data[this.data.length-1].price;
+  }
+
   graphCreation() {
     if (this.props.data.length) {
-      const data = this.priceData();
-      const openingPrice = data[0].price;
+      this.data = this.data || this.priceData();
+      const openingPrice = this.data[0].price;
 
       return (
         <ResponsiveContainer className="chart" width='100%' height='100%'>
-          <LineChart className="chart" width={document.getElementById('App').clientWidth} height={document.getElementById('App').clientHeight * 6 / 10} data={data}>
+          <LineChart onMouseMove={(e) => {this.priceHover(e) }} onMouseLeave={() => {this.priceReset()}} className="chart" width={document.getElementById('App').clientWidth} height={document.getElementById('App').clientHeight * 6 / 10} data={this.data}>
             <YAxis type="number" domain={['dataMin', 'dataMax']} hide={true}/>
             <XAxis dataKey="time" hide={true}/>
-            <Tooltip content={<CustomToolTip time={data.time}/>}/>
+            <Tooltip content={<CustomToolTip/>}/>
             <ReferenceLine y={openingPrice} stroke="black" strokeDasharray="1 8"/>
-              <Line type="monotone" dataKey="price" stroke="#8884d8" />
+            <Line type="monotone" dataKey="price" width="5" stroke="#30CD9A" dot={false}/>
           </LineChart>
         </ResponsiveContainer>
       );
@@ -37,10 +50,24 @@ class Graph extends React.Component {
     return '';
   }
 
+  priceDisp() {
+    if (this.props.data.length) {
+      return (
+        <div id="price">{this.data[this.data.length-1].price}</div>
+      );
+    }
+    return '';
+  }
+
   render() {
     return (
-      <div className="stockValueGraph">
-        {this.graphCreation()}
+      <div id="wrapper">
+        <div className="stockValueGraph">
+          {this.graphCreation()}
+        </div>
+        <div className="priceDisplay">
+          {this.priceDisp()}
+        </div>
       </div>
     );
   }

@@ -6,6 +6,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       data: [],
+      currentPrice: undefined,
     };
   }
 
@@ -14,13 +15,16 @@ class App extends React.Component {
       .then( (res) => {
         return res.json();
       }).then( (jsonData) => {
-        this.setState({ data: jsonData });
+        this.setState({ 
+          data: jsonData,
+          currentPrice: jsonData[0].price,
+        });
       });
   }
 
   render() {
     return (
-        <Graph data={this.state.data}/>
+      <Graph data={this.state.data}/>
     );
   }
 }
