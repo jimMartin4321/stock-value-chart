@@ -24,10 +24,19 @@ module.exports.addStock = (companyId, dateTime, price) => {
 };
 
 module.exports.getStockPrices = (companyId, callback) => {
-  con.query('SELECT price FROM stocks WHERE (company = ?)', [companyId], (err, data) => {
+  con.query('SELECT price, dateTime FROM stocks WHERE (company = ?) ORDER BY id DESC', [companyId], (err, data) => {
     if (err) {
-      callback(err);
+      return callback(err);
     }
     callback(null, data);
   });
 };
+
+module.exports.getCompanyName = (companyId, callback) => {
+  con.query('SELECT name FROM companies WHERE (id = ?)', [companyId], (err, data) => {
+    if (err) {
+      return callback(err);
+    }
+    callback(null, data);
+  });
+}

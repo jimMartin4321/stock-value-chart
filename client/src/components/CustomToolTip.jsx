@@ -9,7 +9,6 @@ class CustomToolTip extends React.PureComponent {
 
   formatTime(payload) {
     const time = payload[0].payload.time;
-    let priceMoment = moment().hour(9).minute(0).add(time, 'minutes').format('h:mm A');
     return priceMoment.toString() + ' ET';
   }
 
@@ -17,9 +16,10 @@ class CustomToolTip extends React.PureComponent {
     const { active } = this.props;
     const { payload } = this.props;
     if (active) {
+      const time = payload[0].payload.time;
       return (
         <div className="CustomToolTip">
-          <p className="time">{this.formatTime(payload)}</p>
+          <p className="time">{time}</p>
         </div>
       );
     }
