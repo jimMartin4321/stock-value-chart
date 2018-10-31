@@ -1,4 +1,4 @@
-const moment = require('moment');
+const moment = require('moment-timezone');
 const faker = require('faker');
 const db = require('./db.js');
 
@@ -10,19 +10,19 @@ const randIncDec = (number) => {
 };
 
 ( () => {
-  const hour = moment().get('hour');
+  const hour = moment().tz('America/New_York').get('hour');
   const minutes = moment().get('minute');
   let numDataPts;
   let dateTime;
 
-  if (hour < 5 || hour > 14) {
-    numDataPts = 120;
-    dateTime = moment().hour(15).minutes(0).seconds(0)
+  if (hour < 9 || (hour === 9 && minutes < 30) || hour > 16) {
+    numDataPts = 108;
+    dateTime = moment().hour(16).minutes(0).seconds(0)
       .milliseconds(0);
   } else {
     const roundedDownMins = minutes - (minutes % 5);
-    numDataPts = (hour * 12) + (roundedDownMins / 5) - (5 * 12);
-    dateTime = moment().minutes(roundedDownMins).seconds(0)
+    numDataPts = (hour * 12) + (roundedDownMins / 5) - (9.5 * 12);
+    dateTime = moment().tz('America/New_York').minutes(roundedDownMins).seconds(0)
       .milliseconds(0);
   }
   for (let i = 0; i < 100; i += 1) {

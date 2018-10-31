@@ -15,6 +15,7 @@ class Graph extends React.Component {
       priceElem.time = time;
       time += 5;
     });
+    console.log(data);
     return data;
   }
 
