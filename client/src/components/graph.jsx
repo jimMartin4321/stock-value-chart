@@ -1,6 +1,7 @@
 import React from 'react';
 import { LineChart, Line, ResponsiveContainer, YAxis, XAxis, ReferenceLine, Tooltip } from 'recharts';
 import CustomToolTip from './CustomToolTip.jsx';
+import styles from '../styles/Graph.css';
 
 class Graph extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class Graph extends React.Component {
       const openingPrice = this.data[0].price;
 
       return (
-        <ResponsiveContainer className="chart" width='100%' height='100%'>
+        <ResponsiveContainer className={styles.chart} width='100%' height='100%'>
           <LineChart onMouseMove={(e) => {this.priceHover(e) }} onMouseLeave={() => {this.priceReset()}} className="chart" width={document.getElementById('App').clientWidth} height={document.getElementById('App').clientHeight * 6 / 10} >
             <YAxis type="number" domain={['dataMin', 'dataMax']} hide={true} />
             <XAxis dataKey="id" type="number" domain={[0, 78]} hide={true} />
@@ -51,9 +52,9 @@ class Graph extends React.Component {
   priceDisp() {
     if (this.props.data.length) {
       return (
-        <div className="priceDisplay">
-          <div id="companyName">{this.props.companyName}</div>
-          <div id="price">{this.data[this.data.length-1].price}</div>
+        <div className={styles.priceDisplay}>
+          <div className={styles.companyName}>{this.props.companyName}</div>
+          <div className={styles.price} id="price">{this.data[this.data.length-1].price}</div>
         </div>
       );
     }
@@ -62,8 +63,8 @@ class Graph extends React.Component {
 
   render() {
     return (
-      <div id="wrapper">
-        <div className="stockValueGraph">
+      <div className={styles.wrapper}>
+        <div className={styles.stockValueGraph}>
           {this.graphCreation()}
         </div>
         {this.priceDisp()}
