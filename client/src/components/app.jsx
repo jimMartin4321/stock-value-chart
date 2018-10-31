@@ -11,13 +11,24 @@ class App extends React.Component {
     };
   }
 
+  timeUpdate(jsonData) {
+    return jsonData.map( (stockObj) => {
+      let time = moment(stockObj.dateTime).format('h: mm A');
+      return {
+        price: stockObj.price,
+        time: time,
+      };
+    });
+  }
+
   componentDidMount() {
     fetch(path.join(__dirname, '/stocks/1'))
       .then( (res) => {
         return res.json();
       }).then( (jsonData) => {
+        let formattedData = this.timeUpdate(jsonData);
         this.setState({ 
-          data: jsonData
+          data: formattedData
         });
       });
     fetch(path.join(__dirname, '/companies/1'))
