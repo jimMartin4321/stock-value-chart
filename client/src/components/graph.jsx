@@ -53,7 +53,10 @@ class Graph extends React.Component {
   priceDisp() {
     if (this.props.data.length) {
       return (
-        <div id="price">{this.data[this.data.length-1].price + ' ' + this.props.companyName}</div>
+        <div className="priceDisplay">
+          <div id="companyName">{this.props.companyName}</div>
+          <div id="price">{this.data[this.data.length-1].price}</div>
+        </div>
       );
     }
     return '';
@@ -65,9 +68,7 @@ class Graph extends React.Component {
         <div className="stockValueGraph">
           {this.graphCreation()}
         </div>
-        <div className="priceDisplay">
-          {this.priceDisp()}
-        </div>
+        {this.priceDisp()}
       </div>
     );
   }
