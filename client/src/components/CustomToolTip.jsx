@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import styles from '../styles/CustomToolTip.css';
 
 class CustomToolTip extends React.PureComponent {
   constructor(props) {
@@ -19,7 +19,7 @@ class CustomToolTip extends React.PureComponent {
       const time = payload[0].payload.time;
       return (
         <div className="CustomToolTip">
-          <p className="time">{time}</p>
+          <p className={styles.time}>{time}</p>
         </div>
       );
     }
@@ -33,3 +33,4 @@ CustomToolTip.proptypes = {
 };
 
 export default CustomToolTip;
+// id = { styles.time }
