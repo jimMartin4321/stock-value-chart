@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const urlParse = require('url-parse');
 const db = require('../db/db.js');
 
 const app = express();
