@@ -33,6 +33,6 @@ module.exports = {
     path: path.join(__dirname, '/client/public'),
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
 };
