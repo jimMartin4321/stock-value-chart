@@ -1,7 +1,7 @@
 import React from 'react';
 import { LineChart, Line, ResponsiveContainer, YAxis, XAxis, ReferenceLine, Tooltip } from 'recharts';
 import CustomToolTip from './CustomToolTip.jsx';
-import styles from '../styles/Graph.css';
+import styles from '../styles/GraphConstructor.css';
 
 const GraphConstructor = (props) => (
 
