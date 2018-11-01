@@ -1,6 +1,4 @@
 import React from 'react';
-import { LineChart, Line, ResponsiveContainer, YAxis, XAxis, ReferenceLine, Tooltip } from 'recharts';
-import CustomToolTip from './CustomToolTip.jsx';
 import styles from '../styles/Graph.css';
 import GraphConstructor from './GraphConstructor.jsx';
 
