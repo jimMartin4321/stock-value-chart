@@ -5,7 +5,7 @@ const CustomToolTip = (props) => {
   const { active } = props;
   const { payload } = props;
   if (active) {
-    const time = payload[0].payload.time;
+    const { time } = payload[0].payload;
     return (
       <div className="CustomToolTip">
         <p className={styles.time}>{time}</p>
@@ -13,6 +13,6 @@ const CustomToolTip = (props) => {
     );
   }
   return null;
-}
+};
 
 export default CustomToolTip;

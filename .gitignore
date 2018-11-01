@@ -1,3 +1,5 @@
 node_modules
-.DS_STORE
+*.DS_STORE
 *bundle.js
+*sum.js
+client/src/tests/__snapshots__/
