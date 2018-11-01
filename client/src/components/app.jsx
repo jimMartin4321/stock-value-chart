@@ -12,11 +12,12 @@ class App extends React.Component {
   }
 
   timeUpdate(jsonData) {
-    return jsonData.map( (stockObj) => {
+    return jsonData.map( (stockObj, index) => {
       let time = moment(stockObj.dateTime).format('h:mm A') + ' ET';
       return {
         price: stockObj.price,
         time: time,
+        id: index,
       };
     });
   }

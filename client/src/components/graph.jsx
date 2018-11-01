@@ -2,18 +2,11 @@ import React from 'react';
 import { LineChart, Line, ResponsiveContainer, YAxis, XAxis, ReferenceLine, Tooltip } from 'recharts';
 import CustomToolTip from './CustomToolTip.jsx';
 import styles from '../styles/Graph.css';
+import GraphConstructor from './GraphConstructor.jsx';
 
 class Graph extends React.Component {
   constructor(props) {
     super(props);
-    let xAxisRef;
-  }
-
-  dataRefGen(dataArr) {
-    dataArr.forEach( (priceObj, index) => {
-      priceObj.id = index + 1;
-    });
-    return dataArr;
   }
 
   priceHover(event) {
@@ -31,19 +24,21 @@ class Graph extends React.Component {
   graphCreation() {
     if (this.props.data.length) {
       this.data = this.data || this.props.data;
-      this.data = this.dataRefGen(this.data);
       const openingPrice = this.data[0].price;
-
       return (
-        <ResponsiveContainer className={styles.chart} width='100%' height='100%'>
-          <LineChart onMouseMove={(e) => {this.priceHover(e) }} onMouseLeave={() => {this.priceReset()}} className="chart" width={document.getElementById('App').clientWidth} height={document.getElementById('App').clientHeight * 6 / 10} >
-            <YAxis type="number" domain={['dataMin', 'dataMax']} hide={true} />
-            <XAxis dataKey="id" type="number" domain={[0, 78]} hide={true} />
-            <Tooltip content={<CustomToolTip/>}/>
-            <ReferenceLine y={openingPrice} stroke="black" strokeDasharray="1 8"/>
-            <Line type="monotone" dataKey="price" data={this.data} width={1} stroke="#30CD9A" dot={false}/>
-          </LineChart>
-        </ResponsiveContainer>
+        //necessary props: data
+
+        <GraphConstructor data={this.data} openingPrice={openingPrice} priceReset={this.priceReset} priceHover={this.priceHover} />
+
+        // <ResponsiveContainer className={styles.chart} width='100%' height='100%'>
+        //   <LineChart onMouseMove={(e) => {this.priceHover(e) }} onMouseLeave={() => {this.priceReset()}} className="chart" width={document.getElementById('App').clientWidth} height={document.getElementById('App').clientHeight * 6 / 10} >
+        //     <YAxis type="number" domain={['dataMin', 'dataMax']} hide={true} />
+        //     <XAxis dataKey="id" type="number" domain={[0, 78]} hide={true} />
+        //     <Tooltip content={<CustomToolTip/>}/>
+        //     <ReferenceLine y={openingPrice} stroke="black" strokeDasharray="1 8"/>
+        //     <Line type="monotone" dataKey="price" data={this.data} width={1} stroke="#30CD9A" dot={false}/>
+        //   </LineChart>
+        // </ResponsiveContainer>
       );
     }
     return '';
