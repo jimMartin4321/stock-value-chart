@@ -1,41 +1,42 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../styles/Graph.css';
-import GraphConstructor from './GraphConstructor.jsx';
+import GraphConstructor from './GraphConstructor';
+
+const priceHover = (event) => {
+  if (event.activePayload) {
+    const { price } = event.activePayload[0].payload;
+    document.getElementById('price').innerHTML = price.toString();
+  }
+};
 
 class Graph extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  priceHover(event) {
-    if (event.activePayload) {
-      const price = event.activePayload[0].payload.price;
-      return (document.getElementById('price').innerHTML = '' + price);
-    }
-    return null;
-  }
-
   priceReset() {
-    document.getElementById('price').innerHTML = '' + this.data[this.data.length-1].price;
+    const endPrice = this.data[this.data.length - 1].price;
+    document.getElementById('price').innerHTML = endPrice.toString();
   }
 
   graphCreation() {
-    if (this.props.data.length) {
-      this.data = this.data || this.props.data;
-      const openingPrice = this.data[0].price;
+    const { data } = this.props;
+    if (data.length) {
+      const openingPrice = data[0].price;
       return (
-        <GraphConstructor data={this.data} openingPrice={openingPrice} priceReset={this.priceReset} priceHover={this.priceHover} />
+        // eslint-disable-next-line max-len
+        <GraphConstructor data={data} openingPrice={openingPrice} priceReset={this.priceReset} priceHover={priceHover} />
       );
     }
     return '';
   }
 
   priceDisp() {
-    if (this.props.data.length) {
+    const { data } = this.props;
+    if (data.length) {
+      const { companyName } = this.props;
       return (
         <div className={styles.priceDisplay}>
-          <div className={styles.companyName}>{this.props.companyName}</div>
-          <div className={styles.price} id="price">{this.data[this.data.length-1].price}</div>
+          <div className={styles.companyName}>{companyName}</div>
+          <div className={styles.price} id="price">{data[data.length - 1].price}</div>
         </div>
       );
     }
@@ -53,5 +54,13 @@ class Graph extends React.Component {
     );
   }
 }
+
+Graph.defaultProps = {
+  data: [],
+};
+
+Graph.propTypes = {
+  data: PropTypes.array,
+};
 
 export default Graph;
