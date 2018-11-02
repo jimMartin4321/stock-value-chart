@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../styles/Graph.css';
 import GraphConstructor from './GraphConstructor';
+import StockHeader from './StockHeader';
 
 const priceHover = (event) => {
   if (event.activePayload) {
@@ -29,30 +30,15 @@ class Graph extends React.Component {
     return '';
   }
 
-  priceDisp() {
-    const { data } = this.props;
-    if (data.length) {
-      const { companyName } = this.props;
-      return (
-        <div className={styles.priceDisplay}>
-          <div className={styles.companyName}>{companyName}</div>
-          <div className={styles.price} id="price">
-            $
-            {data[data.length - 1].price}
-          </div>
-        </div>
-      );
-    }
-    return '';
-  }
-
   render() {
+    const { data } = this.props;
+    const { companyName } = this.props;
     return (
       <div className={styles.wrapper}>
         <div className={styles.stockValueGraph}>
           {this.graphCreation()}
         </div>
-        {this.priceDisp()}
+        {<StockHeader data={data} companyName={companyName} />}
       </div>
     );
   }
