@@ -18,25 +18,13 @@ class Graph extends React.Component {
     document.getElementById('price').innerHTML = ('$').concat(endPrice.toString());
   }
 
-  graphCreation() {
-    const { data } = this.props;
-    if (data.length) {
-      const openingPrice = data[0].price;
-      return (
-        // eslint-disable-next-line max-len
-        <GraphConstructor data={data} openingPrice={openingPrice} priceReset={this.priceReset} priceHover={priceHover} />
-      );
-    }
-    return '';
-  }
-
   render() {
     const { data } = this.props;
     const { companyName } = this.props;
     return (
       <div className={styles.wrapper}>
         <div className={styles.stockValueGraph}>
-          {this.graphCreation()}
+          {<GraphConstructor data={data} priceReset={this.priceReset} priceHover={priceHover} />}
         </div>
         {<StockHeader data={data} companyName={companyName} />}
       </div>
