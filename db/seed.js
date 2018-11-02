@@ -25,18 +25,18 @@ const randIncDec = (number) => {
     dateTime = moment().tz('America/New_York').minutes(roundedDownMins).seconds(0)
       .milliseconds(0);
   }
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 0; i < 1; i += 1) {
     const company = {
       name: faker.company.companyName(),
       id: i + 1,
-      price: Number(faker.finance.amount(10, 1000, 2)),
+      price: Number(faker.commerce.price(1, 1000, 2)),
       dateTime: dateTime.clone(),
-      priceFlux: Math.floor((Math.random() * 5) * 100) / 100,
+      priceFlux: () => Math.random() * 0.5,
     };
     db.addCompany(company.name);
     for (let j = 0; j < numDataPts; j += 1) {
       const time = company.dateTime.subtract(5, 'minutes').format('YYYY-MM-DD HH:mm:ss');
-      company.price += randIncDec(company.priceFlux);
+      company.price += randIncDec(company.priceFlux());
       db.addStock(company.id, time, company.price);
     }
   }
