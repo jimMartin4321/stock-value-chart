@@ -17,6 +17,7 @@ class App extends React.Component {
     this.state = {
       data: [],
       companyName: undefined,
+      displayPrice: undefined,
     };
   }
 
@@ -24,10 +25,9 @@ class App extends React.Component {
     fetch(path.join(__dirname, '/stocks/1'))
       .then(res => res.json())
       .then((jsonData) => {
-        const formattedData = timeUpdate(jsonData);
-        this.setState({
-          data: formattedData,
-        });
+        const data = timeUpdate(jsonData);
+        const displayPrice = data[data.length - 1].price;
+        this.setState({ data, displayPrice });
       });
     fetch(path.join(__dirname, '/companies/1'))
       .then(res => res.json())
@@ -38,10 +38,9 @@ class App extends React.Component {
   }
 
   render() {
-    const { data } = this.state;
-    const { companyName } = this.state;
+    const { data, companyName, displayPrice } = this.state;
     return (
-      <Graph data={data} companyName={companyName} />
+      <Graph data={data} companyName={companyName} displayPrice={displayPrice} />
     );
   }
 }

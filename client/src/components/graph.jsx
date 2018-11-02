@@ -19,14 +19,13 @@ class Graph extends React.Component {
   }
 
   render() {
-    const { data } = this.props;
-    const { companyName } = this.props;
+    const { data, companyName, displayPrice } = this.props;
     return (
       <div className={styles.wrapper}>
         <div className={styles.stockValueGraph}>
-          {<GraphConstructor data={data} priceReset={this.priceReset} priceHover={priceHover} />}
+          <GraphConstructor data={data} priceReset={this.priceReset} priceHover={priceHover} />
         </div>
-        {<StockHeader data={data} companyName={companyName} />}
+        <StockHeader data={data} companyName={companyName} displayPrice={displayPrice} />
       </div>
     );
   }
