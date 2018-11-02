@@ -16,7 +16,7 @@ const GraphConstructor = (props) => {
         <XAxis dataKey="id" type="number" domain={[0, 78]} hide />
         <Tooltip content={<CustomToolTip />} />
         <ReferenceLine y={openingPrice} stroke="black" strokeDasharray="1 8" />
-        <Line type="monotone" dataKey="price" data={data} width={1} stroke="#30CD9A" dot={false} />
+        <Line type="monotone" dataKey="price" data={data} strokeWidth={3} stroke="#30CD9A" dot={false} />
       </LineChart>
 
     </ResponsiveContainer>

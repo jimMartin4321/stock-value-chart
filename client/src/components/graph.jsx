@@ -7,14 +7,14 @@ import GraphConstructor from './GraphConstructor';
 const priceHover = (event) => {
   if (event.activePayload) {
     const { price } = event.activePayload[0].payload;
-    document.getElementById('price').innerHTML = price.toString();
+    document.getElementById('price').innerHTML = ('$').concat(price.toString());
   }
 };
 
 class Graph extends React.Component {
   priceReset() {
     const endPrice = this.data[this.data.length - 1].price;
-    document.getElementById('price').innerHTML = endPrice.toString();
+    document.getElementById('price').innerHTML = ('$').concat(endPrice.toString());
   }
 
   graphCreation() {
@@ -36,7 +36,10 @@ class Graph extends React.Component {
       return (
         <div className={styles.priceDisplay}>
           <div className={styles.companyName}>{companyName}</div>
-          <div className={styles.price} id="price">{data[data.length - 1].price}</div>
+          <div className={styles.price} id="price">
+            $
+            {data[data.length - 1].price}
+          </div>
         </div>
       );
     }
