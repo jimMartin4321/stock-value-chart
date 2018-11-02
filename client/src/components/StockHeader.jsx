@@ -16,7 +16,7 @@ const StockHeader = (props) => {
                 'background-color, color, opacity',
             }}
             frameStyle={perc => (
-              perc === 100 ? {} : { opacity: 0.25 }
+              perc === 100 ? {} : { opacity: 1 }
             )}
             value={displayPrice}
             formatValue={n => '$'.concat(n.toString())}

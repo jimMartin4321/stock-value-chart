@@ -17,8 +17,10 @@ class App extends React.Component {
     this.state = {
       data: [],
       companyName: undefined,
-      displayPrice: undefined,
+      displayPrice: 0,
     };
+    this.handleChartHover = this.handleChartHover.bind(this);
+    this.handleChartLeave = this.handleChartLeave.bind(this);
   }
 
   componentDidMount() {
@@ -37,11 +39,37 @@ class App extends React.Component {
       });
   }
 
+  handleChartHover(event) {
+    if (event.activePayload) {
+      const { price } = event.activePayload[0].payload;
+      this.setState({
+        displayPrice: price,
+      });
+    }
+  }
+
+  handleChartLeave() {
+    const { data } = this.state;
+    const currentMarketPrice = data[data.length - 1].price;
+    this.setState({
+      displayPrice: currentMarketPrice,
+    });
+  }
+
   render() {
     const { data, companyName, displayPrice } = this.state;
-    return (
-      <Graph data={data} companyName={companyName} displayPrice={displayPrice} />
-    );
+    if (data.length) {
+      return (
+        <Graph
+          data={data}
+          companyName={companyName}
+          displayPrice={displayPrice}
+          handleChartHover={this.handleChartHover}
+          handleChartLeave={this.handleChartLeave}
+        />
+      );
+    }
+    return '';
   }
 }
 
