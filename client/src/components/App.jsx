@@ -61,8 +61,9 @@ class App extends React.Component {
   }
 
   marketOpenCheck() {
-    const currentTime = moment().tz('America / New_York');
-    const open = moment().tz('America / New_York')
+    moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0');
+    const currentTime = moment().tz('America/New_York');
+    const open = moment().tz('America/New_York')
       .hour(9)
       .minute(30)
       .second(0)
