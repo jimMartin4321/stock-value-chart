@@ -9,6 +9,7 @@ const timeUpdate = jsonData => (
     time: moment(stockObj.dateTime).format('h:mm A').concat(' ET'),
     id: index,
     marketOpen: false,
+    hover: false,
   }))
 );
 
@@ -48,6 +49,7 @@ class App extends React.Component {
       const { price } = event.activePayload[0].payload;
       this.setState({
         displayPrice: price,
+        hover: true,
       });
     }
   }
@@ -57,11 +59,11 @@ class App extends React.Component {
     const currentMarketPrice = data[data.length - 1].price;
     this.setState({
       displayPrice: currentMarketPrice,
+      hover: false,
     });
   }
 
   marketOpenCheck() {
-    moment.tz.add('America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0');
     const currentTime = moment().tz('America/New_York');
     const open = moment().tz('America/New_York')
       .hour(9)
@@ -73,8 +75,10 @@ class App extends React.Component {
       .minute(0)
       .second(0)
       .millisecond(0);
+    const openTradingHours = currentTime.isBetween(open, close);
+    const isWeekDay = (currentTime.day() !== 6) && (currentTime.day() !== 0);
     this.setState({
-      marketOpen: currentTime.isBetween(open, close),
+      marketOpen: (openTradingHours && isWeekDay),
     });
     setTimeout(() => this.marketOpenCheck, 1000);
   }
@@ -85,6 +89,7 @@ class App extends React.Component {
       companyName,
       displayPrice,
       marketOpen,
+      hover,
     } = this.state;
     if (data.length) {
       return (
@@ -93,6 +98,7 @@ class App extends React.Component {
           companyName={companyName}
           displayPrice={displayPrice}
           marketOpen={marketOpen}
+          hover={hover}
           handleChartHover={this.handleChartHover}
           handleChartLeave={this.handleChartLeave}
         />

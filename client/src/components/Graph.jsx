@@ -7,7 +7,7 @@ import StockHeader from './StockHeader';
 
 const Graph = (props) => {
   const {
-    data, companyName, displayPrice, marketOpen, handleChartHover, handleChartLeave,
+    data, companyName, displayPrice, marketOpen, handleChartHover, hover, handleChartLeave,
   } = props;
   const styles = (marketOpen ? openStyles : closeStyles);
   return (
@@ -17,6 +17,7 @@ const Graph = (props) => {
           data={data}
           handleChartHover={handleChartHover}
           handleChartLeave={handleChartLeave}
+          marketOpen={marketOpen}
         />
       </div>
       <StockHeader
@@ -24,6 +25,7 @@ const Graph = (props) => {
         companyName={companyName}
         displayPrice={displayPrice}
         marketOpen={marketOpen}
+        hover={hover}
       />
     </div>
   );
