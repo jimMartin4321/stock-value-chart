@@ -1,6 +1,6 @@
 import React from 'react';
 import path from 'path';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import Graph from './Graph';
 
 const timeUpdate = jsonData => (
@@ -8,6 +8,8 @@ const timeUpdate = jsonData => (
     price: stockObj.price,
     time: moment(stockObj.dateTime).format('h:mm A').concat(' ET'),
     id: index,
+    marketOpen: false,
+    hover: false,
   }))
 );
 
@@ -18,9 +20,11 @@ class App extends React.Component {
       data: [],
       companyName: undefined,
       displayPrice: 0,
+      marketOpen: true,
     };
     this.handleChartHover = this.handleChartHover.bind(this);
     this.handleChartLeave = this.handleChartLeave.bind(this);
+    this.marketOpenCheck = this.marketOpenCheck.bind(this);
   }
 
   componentDidMount() {
@@ -37,6 +41,7 @@ class App extends React.Component {
         const companyName = jsonData[0].name;
         this.setState({ companyName });
       });
+    this.marketOpenCheck();
   }
 
   handleChartHover(event) {
@@ -44,6 +49,7 @@ class App extends React.Component {
       const { price } = event.activePayload[0].payload;
       this.setState({
         displayPrice: price,
+        hover: true,
       });
     }
   }
@@ -53,17 +59,46 @@ class App extends React.Component {
     const currentMarketPrice = data[data.length - 1].price;
     this.setState({
       displayPrice: currentMarketPrice,
+      hover: false,
     });
   }
 
+  marketOpenCheck() {
+    const currentTime = moment().tz('America/New_York');
+    const open = moment().tz('America/New_York')
+      .hour(9)
+      .minute(30)
+      .second(0)
+      .millisecond(0);
+    const close = moment().tz('America / New_York')
+      .hour(16)
+      .minute(0)
+      .second(0)
+      .millisecond(0);
+    const openTradingHours = currentTime.isBetween(open, close);
+    const isWeekDay = (currentTime.day() !== 6) && (currentTime.day() !== 0);
+    this.setState({
+      marketOpen: (openTradingHours && isWeekDay),
+    });
+    setTimeout(() => this.marketOpenCheck, 1000);
+  }
+
   render() {
-    const { data, companyName, displayPrice } = this.state;
+    const {
+      data,
+      companyName,
+      displayPrice,
+      marketOpen,
+      hover,
+    } = this.state;
     if (data.length) {
       return (
         <Graph
           data={data}
           companyName={companyName}
           displayPrice={displayPrice}
+          marketOpen={marketOpen}
+          hover={hover}
           handleChartHover={this.handleChartHover}
           handleChartLeave={this.handleChartLeave}
         />
