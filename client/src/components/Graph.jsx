@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import openStyles from '../styles/GraphOpen.css';
-import closeStyles from '../styles/GraphClose.css';
+import openStyles from '../styles/marketOpen/GraphOpen.css';
+import closeStyles from '../styles/marketClose/GraphClose.css';
 import GraphConstructor from './GraphConstructor';
 import StockHeader from './StockHeader';
 

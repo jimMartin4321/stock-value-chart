@@ -15,7 +15,7 @@ const StockHeader = (props) => {
   const styles = (marketOpen ? openStyles : closedStyles);
   if (data.length) {
     return (
-      <div className={styles.priceDisplay}>
+      <div className={`${styles.priceDisplay} ${styles.stockHeader}`}>
         <div className={styles.companyName}>{companyName}</div>
         <div className={styles.price} id="price">
           <AnimatedNumber

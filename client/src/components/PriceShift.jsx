@@ -11,9 +11,9 @@ const PriceShift = (props) => {
   const priceShiftExtInfo = (hover) ? '' : 'Today';
   if (priceShift >= 0) {
     return (
-      <p>
+      <span>
         {'+$'.concat(priceShift, ' +', percentShift, '% ', priceShiftExtInfo)}
-      </p>
+      </span>
     );
   }
   priceShift = Math.abs(priceShift);
