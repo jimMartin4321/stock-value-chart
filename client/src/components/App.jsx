@@ -8,6 +8,7 @@ const timeUpdate = jsonData => (
     price: stockObj.price,
     time: moment(stockObj.dateTime).format('h:mm A').concat(' ET'),
     id: index,
+    marketOpen: false,
   }))
 );
 

@@ -10,6 +10,8 @@ const GraphConstructor = (props) => {
     data, handleChartHover, handleChartLeave,
   } = props;
   const openingPrice = data[0].price;
+  const currentMarketPrice = data[data.length - 1].price;
+  const color = (currentMarketPrice >= openingPrice) ? '#30CD9A' : '#F1563A';
   return (
     <ResponsiveContainer className={styles.chart} width="100%" height="100%">
       <LineChart
@@ -28,7 +30,7 @@ const GraphConstructor = (props) => {
           dataKey="price"
           data={data}
           strokeWidth={3}
-          stroke="#30CD9A"
+          stroke={color}
           dot={false}
         />
       </LineChart>

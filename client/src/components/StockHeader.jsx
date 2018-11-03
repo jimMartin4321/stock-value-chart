@@ -10,10 +10,10 @@ const StockHeader = (props) => {
         <div className={styles.companyName}>{companyName}</div>
         <div className={styles.price} id="price">
           <AnimatedNumber
-            duration={500}
+            duration={750}
             stepPrecision={2}
             style={{
-              transition: '0.8s ease-out',
+              transition: '3.0s ease-out',
               transitionProperty:
                 'background-color, color, opacity',
             }}
