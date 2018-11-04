@@ -1,5 +1,5 @@
 import React from 'react';
-import shallow from './enzyme';
+import { mount, shallow } from './enzyme';
 import Graph from '../components/Graph';
 
 const data = [{
@@ -16,15 +16,27 @@ const data = [{
   id: 3,
 }];
 
-const companyName = 'Jim and Assoc.';
+const companyName = 'Asso';
+const displayPrice = 9;
+const marketOpen = true;
+const handleChartHover = () => {};
+const hover = false;
+const handleChartLeave = () => {};
 
-test('graph should accurately display price of last data point (most current)', () => {
+test('graph should render all components correctly', () => {
   const wrapper = shallow(
-    <Graph data={data} companyName={companyName} />,
+    <Graph
+      data={data}
+      companyName={companyName}
+      displayPrice={displayPrice}
+      marketOpen={marketOpen}
+      hover={hover}
+      handleChartHover={handleChartHover}
+      handleChartLeave={handleChartLeave}
+    />,
   );
-  expect(wrapper.contains(
-    <div className="price" id="price">
-      {1}
-    </div>,
-  )).toBe(true);
+  expect(wrapper.find('.wrapper')).toHaveLength(1);
+  expect(wrapper.find('.stockValueGraph')).toHaveLength(1);
+  expect(wrapper.find('GraphConstructor')).toHaveLength(1);
+  expect(wrapper.find('StockHeader')).toHaveLength(1);
 });
