@@ -34,10 +34,11 @@ const randIncDec = (number) => {
       priceFlux: () => Math.random() * 0.5,
     };
     db.addCompany(company.name);
+    db.addStock(company.id, company.dateTime.format('YYYY-MM-DD HH:mm:ss'), company.price);
     for (let j = 0; j < numDataPts; j += 1) {
       const time = company.dateTime.subtract(5, 'minutes').format('YYYY-MM-DD HH:mm:ss');
-      company.price += randIncDec(company.priceFlux());
       db.addStock(company.id, time, company.price);
+      company.price += randIncDec(company.priceFlux());
     }
   }
 })();

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Exo:300,400,500,600,900');
+@import url('https://fonts.googleapis.com/css?family=Exo:400,500');
 
 .priceDisplay {
   grid-row: 1 / span 2;
@@ -16,7 +16,7 @@
 .companyName {
   height: 45%;
   font-size: 3em;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 1%;
 }
 
