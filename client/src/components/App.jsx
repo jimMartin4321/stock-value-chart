@@ -1,5 +1,4 @@
 import React from 'react';
-import path from 'path';
 import moment from 'moment-timezone';
 import Graph from './Graph';
 
@@ -28,14 +27,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch(path.join(__dirname, '/stocks/1'))
+    fetch('/stocks/1')
       .then(res => res.json())
       .then((jsonData) => {
         const data = timeUpdate(jsonData);
         const displayPrice = data[data.length - 1].price;
         this.setState({ data, displayPrice });
       });
-    fetch(path.join(__dirname, '/companies/1'))
+    fetch('/companies/1')
       .then(res => res.json())
       .then((jsonData) => {
         const companyName = jsonData[0].name;
