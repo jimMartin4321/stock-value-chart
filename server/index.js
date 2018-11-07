@@ -19,7 +19,8 @@ app.listen(port, (err) => {
 });
 
 app.get('/stocks/:companyId', (req, res) => {
-  db.getStockPrices(req.params.companyId, (err, data) => {
+  const { companyId } = req.params;
+  db.getStockPrices(companyId, (err, data) => {
     if (err) {
       res.end(err);
     }
@@ -28,7 +29,8 @@ app.get('/stocks/:companyId', (req, res) => {
 });
 
 app.get('/companies/:companyId', (req, res) => {
-  db.getCompanyName(req.params.companyId, (err, data) => {
+  const { companyId } = req.params;
+  db.getCompanyName(companyId, (err, data) => {
     if (err) {
       res.end(err);
     }

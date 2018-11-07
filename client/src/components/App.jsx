@@ -27,14 +27,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/stocks/1')
+    const id = Math.floor(Math.random() * 100);
+    fetch(`/stocks/${id}`)
       .then(res => res.json())
       .then((jsonData) => {
         const data = timeUpdate(jsonData);
         const displayPrice = data[data.length - 1].price;
         this.setState({ data, displayPrice });
       });
-    fetch('/companies/1')
+    fetch(`/companiesJim/${id}`)
       .then(res => res.json())
       .then((jsonData) => {
         const companyName = jsonData[0].name;
@@ -74,12 +75,15 @@ class App extends React.Component {
       .minute(0)
       .second(0)
       .millisecond(0);
-    const openTradingHours = currentTime.isBetween(open, close);
+    const openTradingHours = (
+      (currentTime.hour() > open.hour()
+        || (currentTime.hour() === open.hour() && currentTime.minutes() >= open.minutes()))
+      && currentTime.hour() < close.hour()
+    );
     const isWeekDay = (currentTime.day() !== 6) && (currentTime.day() !== 0);
     this.setState({
       marketOpen: (openTradingHours && isWeekDay),
     });
-    setTimeout(() => this.marketOpenCheck, 1000);
   }
 
   render() {
