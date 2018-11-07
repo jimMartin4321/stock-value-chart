@@ -9,4 +9,5 @@
   display: grid;
   grid-template-columns: repeat(15, 1fr);
   grid-template-rows: repeat(10, 1fr);
+  background-color: white;
 }
