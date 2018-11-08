@@ -28,14 +28,14 @@ class App extends React.Component {
 
   componentDidMount() {
     const id = Math.floor(Math.random() * 100);
-    fetch(`/stocks/${id}`)
+    fetch(`/chart/stocks/${id}`)
       .then(res => res.json())
       .then((jsonData) => {
         const data = timeUpdate(jsonData);
         const displayPrice = data[data.length - 1].price;
         this.setState({ data, displayPrice });
       });
-    fetch(`/companiesJim/${id}`)
+    fetch(`/chart/companies/${id}`)
       .then(res => res.json())
       .then((jsonData) => {
         const companyName = jsonData[0].name;

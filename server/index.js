@@ -20,7 +20,7 @@ app.listen(port, (err) => {
   return console.log(`listening at port ${port}`);
 });
 
-app.get('/stocks/:companyId', (req, res) => {
+app.get('/chart/stocks/:companyId', (req, res) => {
   const { companyId } = req.params;
   db.getStockPrices(companyId, (err, data) => {
     if (err) {
@@ -30,7 +30,7 @@ app.get('/stocks/:companyId', (req, res) => {
   });
 });
 
-app.get('/companies/:companyId', (req, res) => {
+app.get('/chart/companies/:companyId', (req, res) => {
   const { companyId } = req.params;
   db.getCompanyName(companyId, (err, data) => {
     if (err) {
