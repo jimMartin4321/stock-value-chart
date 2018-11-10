@@ -25,7 +25,7 @@ const randIncDec = (number) => {
     dateTime = moment().tz('America/New_York').minutes(roundedDownMins).seconds(0)
       .milliseconds(0);
   }
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 0; i < 10; i += 1) {
     const company = {
       name: faker.hacker.abbreviation(),
       id: i + 1,

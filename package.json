@@ -24,6 +24,7 @@
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.23",
     "mysql": "^2.16.0",
+    "mysql2": "^1.6.4",
     "nodemon": "^1.18.4",
     "path": "^0.12.7",
     "prop-types": "^15.6.2",
@@ -32,6 +33,7 @@
     "react-dom": "^16.6.0",
     "react-test-renderer": "^16.6.0",
     "recharts": "^1.3.5",
+    "sequelize": "^4.41.1",
     "url-parse": "^1.4.3"
   },
   "devDependencies": {

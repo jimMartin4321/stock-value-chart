@@ -1,9 +1,9 @@
 const mySql = require('mysql');
 
 const con = mySql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
+  host: 'robinhood-charts.c2zlloqmr6gl.us-east-2.rds.amazonaws.com',
+  user: 'jamesmartin',
+  password: 'QETUO1177adgjl',
   database: 'robinhood',
 });
 
@@ -39,4 +39,4 @@ module.exports.getCompanyName = (companyId, callback) => {
     }
     callback(null, data);
   });
-}
+};

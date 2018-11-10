@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
-const seed = require('../db/seed.js');
 const db = require('../db/db.js');
 
 const app = express();
