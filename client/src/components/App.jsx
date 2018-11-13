@@ -5,7 +5,7 @@ import Graph from './Graph';
 const timeUpdate = jsonData => (
   jsonData.map((stockObj, index) => ({
     price: stockObj.price,
-    time: moment(stockObj.dateTime).format('h:mm A').concat(' ET'),
+    time: moment(stockObj.dateTime).add(8, 'hour').format('h:mm A').concat(' ET'),
     id: index,
     marketOpen: false,
     hover: false,

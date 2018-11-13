@@ -8,8 +8,9 @@ body {
   grid-template-rows: repeat(20, 1fr);
 }
 
-#App {
+#stockValueChart {
   grid-column: 3 / span 10;
   grid-row: 3 / span 11;
   display: block;
 }
+
