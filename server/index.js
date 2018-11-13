@@ -6,7 +6,7 @@ const db = require('../db/db.js');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
@@ -24,7 +24,7 @@ app.get('/chart/stocks/:companyId', (req, res) => {
   const { companyId } = req.params;
   db.getStockPrices(companyId, (err, data) => {
     if (err) {
-      res.end(err);
+      res.send(err);
     }
     res.json(data);
   });
@@ -34,7 +34,7 @@ app.get('/chart/companies/:companyId', (req, res) => {
   const { companyId } = req.params;
   db.getCompanyName(companyId, (err, data) => {
     if (err) {
-      res.end(err);
+      res.send(err);
     }
     res.json(data);
   });
