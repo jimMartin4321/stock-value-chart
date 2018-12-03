@@ -14,7 +14,7 @@ Market closed & at a profit:
 Market open & at a profit:
 
 Market closed & at a loss:
-
+![Alt text](https://github.com/jimMartin4321/stock-value-chart/blob/master/img/loss_screenShot.png "market closed")
 
 # Api
 
