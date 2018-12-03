@@ -14,7 +14,7 @@ Market closed & at a profit:
 Market open & at a profit:
 
 Market closed & at a loss:
-
+![Alt text](https://github.com/jimMartin4321/stock-value-chart/blob/master/img/loss_screenShot.png "market closed")
 
 # Api
 
@@ -23,17 +23,5 @@ Market closed & at a loss:
 | /chart/stocks/:companyId | GET | Get the stock prices for given company
 | /chart/companies/:companyId | GET | Get information on a specific company
 
-## Usage
-To run:
-- run schema.sql to create SQL database (mysql -u [username] -p [password])
-- npm run seed to seed database
-- npm start to start server
-- hosted on localhost:3001
-- run npm run react to compile webapp 
-
-### Installing Dependencies
-
-From within the root directory:
-
-npm install
-
+# Proxy Server Code
+https://github.com/jimMartin4321/MM-proxy
