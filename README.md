@@ -23,5 +23,5 @@ Market closed & at a loss:
 | /chart/stocks/:companyId | GET | Get the stock prices for given company
 | /chart/companies/:companyId | GET | Get information on a specific company
 
-
-
+# Service Proxy
+https://github.com/jimMartin4321/MM-proxy
