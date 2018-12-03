@@ -9,7 +9,7 @@ http://ec2-3-17-25-148.us-east-2.compute.amazonaws.com/
 # Screenshots of the service
 
 Market closed & at a profit:
-![Alt text](/img/Screen Shot 2018-12-02 at 3.52.25 PM.png "market closed")
+![Alt text](./img/Screen Shot 2018-12-02 at 3.52.25 PM.png "market closed")
 
 Market open & at a profit:
 
