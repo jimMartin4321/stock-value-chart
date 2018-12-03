@@ -9,7 +9,7 @@ http://ec2-3-17-25-148.us-east-2.compute.amazonaws.com/
 # Screenshots of the service
 
 Market closed & at a profit:
-![Alt text](https://ibb.co/SJnk0fb "market closed")
+![Alt text](https://github.com/jimMartin4321/stock-value-chart/blob/master/img/Screen%20Shot%202018-12-02%20at%203.52.25%20PM.png "market closed")
 
 Market open & at a profit:
 
