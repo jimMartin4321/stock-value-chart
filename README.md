@@ -12,6 +12,7 @@ Market closed & at a profit:
 ![Alt text](https://github.com/jimMartin4321/stock-value-chart/blob/master/img/Screen%20Shot%202018-12-02%20at%203.52.25%20PM.png "market closed")
 
 Market open & at a profit:
+![Alt text](https://github.com/jimMartin4321/stock-value-chart/blob/master/img/market_open.png "market open")
 
 Market closed & at a loss:
 ![Alt text](https://github.com/jimMartin4321/stock-value-chart/blob/master/img/loss_screenShot.png "market closed")
