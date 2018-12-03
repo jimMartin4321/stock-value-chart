@@ -11,9 +11,9 @@ module.exports = function (grunt) {
       },
       files: {
         expand: true,
-        cwd: '../stock-value-chart/client/public',
+        cwd: '../stock-value-chart/client/dist',
         src: 'bundle.js.gz',
-        dest: 'bundle.js.gz',
+        dest: '',
       },
     },
   });
