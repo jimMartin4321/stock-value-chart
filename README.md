@@ -1,6 +1,6 @@
 # Service Description
 
-Service for a trading platform designed using service oriented architecture. The chart displays mock companies stock price data throughout the day. The chart is interactive and displays the price and time of each location on the chart. The chart also has a different color theme depending on whether the market is open, the market is closed, and if the stock is at a profit or loss on the day. This service is implemented using a proxy server, whose link is referenced at the bottom of this read me.
+Service for a trading platform designed using service oriented architecture. The chart displays mock companies stock price data throughout the day. The chart is interactive and displays the price and time of each location on the chart. The chart also has a different color theme depending on whether the market is open, the market is closed, and if the stock is at a profit or loss on the day. This service is implemented by a proxy server, whose link is referenced at the bottom of this read me.
 
 # Host address
 
